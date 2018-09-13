@@ -22,13 +22,30 @@ protected:
 private:
 };
 
-class Rectangle : public Shape
+class Circle : public Shape
 {
 public:
 	Circle();
 	Circle(string N, string C, int R);
 	int GetRadius();
-	void SetRadius();
-	void Display
-}
+	void SetRadius(int);
+	void Display();
+private: 
+	int radius;
+};
+class Rectangle : public Shape
+{
+public:
+	Rectangle();
+	Rectangle(string rName, string rColor, int width, int height);
+	int GetWidth();
+	void SetWidth(int);
+	int GetHeight();
+	void SetHeight(int);
+	void Display();
+private:
+	int width;
+	int height;
+
+};
 #endif

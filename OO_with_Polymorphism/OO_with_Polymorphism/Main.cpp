@@ -37,7 +37,9 @@ void main()
 			cin >> inValue1;
 			cout << "Rectangle Height: ";
 			cin >> inValue2;
-
+			rectPtr = new Rectangle();
+			rectPtr->SetName(inString1);
+			rectPtr->SetColor
 		}
 	}
 }

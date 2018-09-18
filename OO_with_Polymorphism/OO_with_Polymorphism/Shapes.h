@@ -43,6 +43,7 @@ public:
 	int GetHeight();
 	void SetHeight(int);
 	void Display();
+	void Display(bool details);
 private:
 	int width;
 	int height;

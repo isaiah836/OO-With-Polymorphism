@@ -39,7 +39,26 @@ void main()
 			cin >> inValue2;
 			rectPtr = new Rectangle();
 			rectPtr->SetName(inString1);
-			rectPtr->SetColor
+			rectPtr->SetColor(inString2);
+			rectPtr->SetWidth(inValue1);
+			rectPtr->SetHeight(inValue2);
+			shapeList.push_back(rectPtr);
+			break;
+		case 2:
+			cout << "Circle Name: ";
+			cin >> inString1;
+			cout << "Circle Color: ";
+			cin >> inString2;
+			cout << "Circle Radius: ";
+			cin >> inValue1;
+			cirPtr = new Circle();
+			cirPtr->SetName(inString1);
+			cirPtr->SetColor(inString2);
+			cirPtr->SetRadius(inValue1);
+			shapeList.push_back(cirPtr);
+			break;
+		case 3:
+			break;
 		}
 	}
 }

@@ -60,5 +60,15 @@ void main()
 		case 3:
 			break;
 		}
-	}
+	} while (choice != 99);
+
+	if (shapeList.size()) redrawShape();
+
+	system("pause");
+}
+
+void redrawShape()
+{
+	cout << "\n These are the shapes: " << endl;
+	for (unsigned int i = 0; i < shapeList.size(); i++)
 }

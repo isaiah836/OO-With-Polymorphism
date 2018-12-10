@@ -5,21 +5,26 @@
 #include "Characters.h"
 using namespace std;
 
+// a function used to display the list of characters created
 void showCharacters();
 
-std::vector<Characters *> characterList;
+// a vector that holds a list of character objects created and a character pointer
+vector<Characters *> characterList;
 Characters * charPtr;
 
 void main()
 {
+	//Variables created to hold inputed information and 2 pointers
 	string inString1, inString2;
 	int inValue1, inValue2;
 	int choice;
 	Goblin * gobPtr;
 	Zombie * zombPtr;
-
+	
+	//a loop that has the user create characters until they quit the program
 	do
 	{
+		// display menu for the user and gets choice from user
 		cout << "\nMenu for entering shape:\n";
 		cout << "1: To enter a Goblin\n";
 		cout << "2: To enter a Zombie\n";
@@ -30,6 +35,7 @@ void main()
 
 		switch (choice)
 		{
+			//if the user chose to create a goblin then itll go through this case and create a goblin
 		case 1:
 			cout << "Goblin Name: ";
 			cin >> inString1;
@@ -42,6 +48,8 @@ void main()
 			gobPtr = new Goblin(inString1, inString2, inValue1, inValue2);
 			characterList.push_back(gobPtr);
 			break;
+		
+			//case 2 is if the user decides to create a zombie
 		case 2:
 			cout << "Zombie Name: ";
 			cin >> inString1;
@@ -52,6 +60,8 @@ void main()
 			zombPtr = new Zombie(inString1, inValue1, inValue2);
 			characterList.push_back(zombPtr);
 			break;
+
+			// case 3 is if the user wants to create a normal character
 		case 3:
 			cout << "Character Name: ";
 			cin >> inString1;
@@ -61,15 +71,21 @@ void main()
 			characterList.push_back(charPtr);
 			break;
 		}
+
+	//breaks loop if the user enters 99
 	} while (choice != 99);
 
+	//this will display the list of characters the user has created
 	if (characterList.size()) showCharacters();
 
 	system("pause");
 }
 
+
+// function show characters defined
 void showCharacters()
 {
+	//for each character in list display the information for them
 	cout << "\n These are the Characters you created: " << endl;
 	for (unsigned int i = 0; i < characterList.size(); i++)
 	{

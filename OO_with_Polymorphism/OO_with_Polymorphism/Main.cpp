@@ -1,27 +1,29 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include "Shapes.h"
+#include <algorithm>
+#include "Characters.h"
 using namespace std;
 
 void showCharacters();
 
-vector<Shape *> shapeList;
-Shape * shapePtr;
+std::vector<Characters *> characterList;
+Characters * charPtr;
 
 void main()
 {
 	string inString1, inString2;
 	int inValue1, inValue2;
 	int choice;
-	Rectangle * rectPtr;
-	Circle * cirPtr;
+	Goblin * gobPtr;
+	Zombie * zombPtr;
 
 	do
 	{
 		cout << "\nMenu for entering shape:\n";
-		cout << "1: To enter a rectangle\n";
-		cout << "2: To enter a circle\n";
+		cout << "1: To enter a Goblin\n";
+		cout << "2: To enter a Zombie\n";
+		cout << "3: To enter a Normal Character\n";
 		cout << "99: Finish entering\n";
 		cout << "Please enter your choice (#): ";
 		cin >> choice;
@@ -29,46 +31,49 @@ void main()
 		switch (choice)
 		{
 		case 1:
-			cout << "Rectangle Name: ";
+			cout << "Goblin Name: ";
 			cin >> inString1;
-			cout << "Rectangle Color: ";
-			cin >> inString2;
-			cout << "Rectangle Width: ";
+			cout << "Goblin Health: ";
 			cin >> inValue1;
-			cout << "Rectangle Height: ";
+			cout << "Goblin Weapon: ";
+			cin >> inString2;
+			cout << "Goblin Weapon Damage: ";
 			cin >> inValue2;
-			rectPtr = new Rectangle();
-			rectPtr->SetName(inString1);
-			rectPtr->SetColor(inString2);
-			rectPtr->SetWidth(inValue1);
-			rectPtr->SetHeight(inValue2);
-			shapeList.push_back(rectPtr);
+			gobPtr = new Goblin(inString1, inString2, inValue1, inValue2);
+			characterList.push_back(gobPtr);
 			break;
 		case 2:
-			cout << "Circle Name: ";
+			cout << "Zombie Name: ";
 			cin >> inString1;
-			cout << "Circle Color: ";
+			cout << "Zombie Health: ";
 			cin >> inString2;
-			cout << "Circle Radius: ";
+			cout << "Zombie Bite Damage: ";
 			cin >> inValue1;
-			cirPtr = new Circle();
-			cirPtr->SetName(inString1);
-			cirPtr->SetColor(inString2);
-			cirPtr->SetRadius(inValue1);
-			shapeList.push_back(cirPtr);
+			zombPtr = new Zombie(inString1, inValue1, inValue2);
+			characterList.push_back(zombPtr);
 			break;
 		case 3:
+			cout << "Character Name: ";
+			cin >> inString1;
+			cout << "Characters health: ";
+			cin >> inValue1;
+			charPtr = new Characters(inString1, inValue1);
+			characterList.push_back(charPtr);
 			break;
 		}
 	} while (choice != 99);
 
-	if (shapeList.size()) redrawShape();
+	if (characterList.size()) showCharacters();
 
 	system("pause");
 }
 
-void redrawShape()
+void showCharacters()
 {
-	cout << "\n These are the shapes: " << endl;
-	for (unsigned int i = 0; i < shapeList.size(); i++)
+	cout << "\n These are the Characters you created: " << endl;
+	for (unsigned int i = 0; i < characterList.size(); i++)
+	{
+		charPtr = characterList[i];
+		charPtr->Display();
+	}
 }
